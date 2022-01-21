@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome To Facebook</title>
+
+</head>
+<body>
+    <h1>Add a Post</h1>
+    <form method="POST" action="/feed">
+        <div>
+            <input type="text" name="name"  placeholder="Name" minlength="15" required/>
+        </div>
+        
+        <div>
+            <br>
+            <textarea rows="7" cols="40" name="message"  placeholder="Message" minlength="40" required></textarea>
+        </div>
+     
+       
+        <div>
+            <button type="submit">Add post</button>
+        </div>
+    </form>
+    <!-- <a href="/feed">Create new article</a> -->
+
+    <div class="container">
+    
+        <% result.forEach(function(item) { %>
+            <h3><a href="/feed/<%=item.id %>"> <%= item.name %> </a></h3>
+            <p><%= item.message %></p>
+            <p><%= new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'numeric', day: '2-digit'}).format(new Date(item.updatedAt)) %></p>
+         
+        <% }); %>
+        
+    
+    </div>
+
+</body>
+</html>
